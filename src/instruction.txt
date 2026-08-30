@@ -1,0 +1,125 @@
+================================================================================
+            AJailFix v26.3.5 — ИНСТРУКЦИЯ ПО ПРАВАМ И НАСТРОЙКЕ УРОВНЕЙ
+================================================================================
+
+1. КАК РАБОТАЮТ ВСТРОЕННЫЕ УРОВНИ АДМИНИСТРАЦИИ (1 - 6 LVL)
+--------------------------------------------------------------------------------
+В плагине встроена система уровней администрации, управляемая через команды:
+  • /adminlevels on|off|status — Включить/выключить систему уровней.
+  • /adminlevel <ник> <1-6|remove> — Выдать игроку уровень админки от 1 до 6 (или снять).
+
+Каждый уровень иерархичен: старший уровень включает в себя все права младших уровней
+и защищён от воздействия младших администраторов (например, админ 2 LVL не может
+забанить или кикнуть админа 3 LVL).
+
+2. РУЧНОЕ РЕДАКТИРОВАНИЕ ПРАВ ДЛЯ КАЖДОГО УРОВНЯ
+--------------------------------------------------------------------------------
+При первом запуске плагин автоматически создаёт файл:
+  plugins/AJailFix/admin-levels.properties
+
+В этом файле содержатся списки прав (permissions), привязанных к каждому уровню:
+  level.1.permissions=ajail.suite.access,ajail.reports,ajail.adminchat,ajail.history,ajail.asms,ajail.esp
+  level.2.permissions=ajail.level.1,ajail.teleport,ajail.invsee,ajail.spec,ajail.az,ajail.godmode,ajail.swapgm
+  level.3.permissions=ajail.level.2,ajail.use,ajail.unjail,ajail.check,ajail.checks,ajail.mute,ajail.unmute,ajail.global
+  level.4.permissions=ajail.level.3,ajail.ban,ajail.unban,ajail.event,ajail.event.manage,ajail.leader.manage,ajail.logs
+  level.5.permissions=ajail.level.4,ajail.admin,ajail.admin.manage,ajail.set,ajail.reload
+  level.6.permissions=ajail.level.5,ajail.*
+
+Вы можете В РУЧНУЮ редактировать файл admin-levels.properties:
+  • Добавлять или удалять любые права (через запятую).
+  • Подключать права от других плагинов (например, litebans.ban, essentials.fly и т.д.).
+  • После изменения файла выполните /ajail reload или перезапустите сервер — права применятся автоматически!
+
+--------------------------------------------------------------------------------
+3. ПОЛНЫЙ СПИСОК ПРАВ (PERMISSIONS) И ИХ ОПИСАНИЕ
+--------------------------------------------------------------------------------
+
+[Основная система и модерация]
+  • ajail.use               — Доступ к команде /ajail (посадить игрока в деморган).
+  • ajail.unjail            — Возможность выпускать игроков из деморгана (/ajail remove).
+  • ajail.check             — Проверка оставшегося времени в деморгане (/ajail check).
+  • ajail.set               — Установка точек спавна и выхода деморгана (/ajail set).
+  • ajail.reload            — Перезагрузка конфигурации плагина (/ajail reload).
+  • ajail.warn              — Выдача предупреждений игроку (/warn).
+  • ajail.unwarn            — Снятие предупреждений (/unwarn).
+  • ajail.ban               — Заблокировать игрока (/ban, /aban) и просмотр банлиста (/banlist, /bancheck).
+  • ajail.unban             — Разблокировка игрока (/unban).
+  • ajail.mute              — Выдача мута (/mute) и просмотр списка мутов (/mutelist, /mutecheck).
+  • ajail.unmute            — Снятие мута (/unmute).
+  • ajail.checks            — Управление проверками на читы (/check, /uncheck, /checks).
+  • ajail.history           — Просмотр истории наказаний игрока (/history).
+  • ajail.case              — Просмотр полной карточки игрока (/case).
+
+[Репорты и коммуникация]
+  • ajail.report            — Отправка репорта администрации (/report) — доступно всем игрокам.
+  • ajail.reports           — Просмотр списка репортов (/reports, /repqueue) и управление ими (/ans, /repcontrol).
+  • ajail.adminchat         — Основной чат администрации (/a <сообщение>).
+  • ajail.global            — Отправка глобального объявления на весь сервер (/o <сообщение>).
+  • ajail.asms              — Отправка личного сообщения от имени администрации (/asms).
+
+[Управление игроками и инструментарий (AdminSuite)]
+  • ajail.suite.access      — Базовый доступ к командам AdminSuite (/whois, /notes, /staffmode, /vanish, /freeze).
+  • ajail.staffmode         — Включение режима работы администратора / duty (/staffmode, /duty).
+  • ajail.vanish            — Включение невидимости (/vanish, /v).
+  • ajail.freeze            — Заморозка и разморозка игрока (/freeze, /unfreeze).
+  • ajail.teleport          — Телепортация (/goto, /tp, /gh, /gethere).
+  • ajail.back              — Возврат на предыдущую точку телепортации (/back).
+  • ajail.invsee            — Просмотр инвентаря игроков (/invsee).
+  • ajail.endersee          — Просмотр эндер-сундука игрока (/endersee).
+  • ajail.armorsee          — Просмотр надетой брони и второй руки (/armorsee).
+  • ajail.spec              — Переход в режим наблюдения за игроком (/spec).
+  • ajail.heal              — Лечение игроков (/heal).
+  • ajail.feed              — Восстановление сытости игроков (/feed).
+  • ajail.speed             — Изменение скорости ходьбы и полёта (/speed).
+  • ajail.fly               — Включение и выключение режима полёта (/fly).
+  • ajail.godmode           — Управление режимом бессмертия (/gm, /godmode).
+  • ajail.swapgm            — Быстрое переключение Survival <-> Spectator (/swapgm).
+  • ajail.esp               — Просмотр ESP-подсветки лидеров и администрации (/esp, /leads, /admins).
+
+[Чат, сервер и ивенты]
+  • ajail.clearchat         — Очистка общего чата (/clearchat).
+  • ajail.slowchat          — Установка задержки между сообщениями (/slowchat).
+  • ajail.mutechat          — Полное закрытие/открытие общего чата (/mutechat).
+  • ajail.broadcasttitle    — Отправка Title/Subtitle всем игрокам (/broadcasttitle, /btitle).
+  • ajail.actionbarall      — Отправка сообщения в ActionBar всем игрокам (/actionbarall).
+  • ajail.soundall          — Воспроизведение звука всем игрокам (/soundall).
+  • ajail.event             — Доступ к старым командам ивентов (/eventpvp, /eventzone, /makeevent).
+  • ajail.event.manage      — Полное управление системой ивентов и турнирами (/ev, /eventadmin).
+  • ajail.event.join        — Право на вход в ивент (/event) — доступно всем игрокам.
+  • ajail.serverinfo        — Информация о состоянии сервера, TPS, MSPT, ОЗУ (/serverinfo, /lag).
+  • ajail.entitycount       — Подсчёт сущностей в мире (/entitycount).
+  • ajail.cleardrops        — Очистка лежащих предметов (/cleardrops).
+  • ajail.killmobs          — Удаление мобов (/killmobs).
+  • ajail.adminpanel        — Открытие графической панели администрации (/adminpanel, /apanel).
+
+[Старшая администрация и управление сервером]
+  • ajail.admin             — Полный административный доступ, обход ограничений.
+  • ajail.logs              — Получение сообщений [ЛОГ] о действиях администрации в чат и доступ к /adminlog.
+  • ajail.sudo              — Выполнение команд от имени других игроков (/sudo).
+  • ajail.maintenance       — Включение/выключение режима техработы (/maintenance).
+  • ajail.restart           — Управление запланированным рестартом (/restart, /cancelrestart).
+  • ajail.rollback          — Откат административного действия (/rollbackpunish).
+  • ajail.audit             — Просмотр журнала аудита (/audit).
+  • ajail.punishtemplate    — Управление шаблонами наказаний (/punishtemplate, /punish).
+  • ajail.mass              — Выполнение массовых действий над игроками (/mass).
+  • ajail.tempperm          — Выдача временных прав и уровней (/tempperm, /templevel).
+  • ajail.emergency         — Включение аварийного режима сервера (/emergency).
+  • ajail.serverlock        — Блокировка входа новых игроков (/serverlock).
+  • ajail.incident          — Запуск режима записи инцидента (/incident).
+  • ajail.schedule          — Планировщик команд (/schedule, /schedules, /unschedule).
+  • ajail.webhook           — Настройка Discord Webhook (/webhook).
+  • ajail.*                 — Абсолютно все права плагина AJailFix (высший приоритет).
+
+================================================================================
+4. ОБНОВЛЁННОЕ ГРАФИЧЕСКОЕ МЕНЮ (/adminpanel или /apanel)
+--------------------------------------------------------------------------------
+Графическое меню админа (GUI) теперь имеет удобный формат 6 строк (54 слота) с красивой
+окантовкой из стекла:
+  • Введите /apanel — Откроется главная панель сервера (информация, онлайн админы,
+    список репортов, проверки, банлист, мутлист, очистка дропа/мобов, аудит, очистка чата).
+  • Введите /apanel <ник> — Откроется панель управления конкретным игроком
+    (Whois, телепорт, заморозка, инвентарь, эндер-сундук, броня, spectate, heal, feed,
+    история наказаний, карточка игрока /case, запуск проверки на читы /check).
+
+Все кнопки в GUI полностью функциональны и выполняют соответствующие команды.
+================================================================================

@@ -1,0 +1,90 @@
+# AJailFix Messages (Russian)
+
+prefix: "&8[&cAJail&8]&r "
+admin-prefix: "&8[&6Admin&8]&r "
+
+# General messages
+no-permission: "&cУ вас нет прав на это действие!"
+player-not-found: "&cИгрок не найден: {player}"
+player-only: "&cЭта команда только для игроков!"
+
+# Teleport messages
+teleported-to: "&aТелепортация к игроку: &e{player}"
+player-teleported: "&aИгрок {player} телепортирован к вам!"
+no-saved-location: "&cНет сохранённой локации!"
+returned: "&aВозврат на предыдущую локацию!"
+
+# Inventory messages
+inventory-opened: "&aОткрыт инвентарь игрока: &e{player}"
+enderchest-opened: "&aОткрыт эндер-сундук игрока: &e{player}"
+armor-opened: "&aОткрыта броня игрока: &e{player}"
+
+# Freeze messages
+player-frozen: "&aИгрок {player} заморожен!"
+player-unfrozen: "&aИгрок {player} разморожен!"
+already-frozen: "&cИгрок уже заморожен!"
+return-to-location: "&cВернитесь на место заморозки!"
+
+# Vanish messages
+vanish-on: "&aВы исчезли из виду!"
+vanish-off: "&aВы снова видимы!"
+
+# Staff mode messages
+staffmode-on: "&a✓ Staff Mode включён!"
+staffmode-off: "&c✗ Staff Mode выключен!"
+
+# God mode messages
+godmode-on: "&aGod Mode включён!"
+godmode-off: "&cGod Mode выключен!"
+
+# Fly messages
+fly-on: "&aFly включён!"
+fly-off: "&cFly выключен!"
+
+# Punishment messages
+player-banned: "&aИгрок забанен!"
+player-unbanned: "&aИгрок разбанен!"
+player-muted: "&aИгрок замучен!"
+player-unmuted: "&aС игрока снят мут!"
+player-kicked: "&aИгрок кикнут!"
+warning-issued: "&aПредупреждение #{id} выдано!"
+
+# Check messages
+check-started: "&aПроверка начата на игрока: &e{player}"
+check-ended: "&aПроверка завершена!"
+no-active-checks: "&eНет активных проверок!"
+
+# Admin level messages
+level-set: "&aВам выдан уровень администратора: &e{level}"
+level-removed: "&cС вас снят уровень администратора: &e{level}"
+admin-effects-removed: "&eВсе администраторские эффекты были сняты (GM, Fly, Vanish, StaffMode)"
+
+# Report messages
+report-sent: "&aРепорт #{id} отправлен!"
+no-reports: "&eНет открытых репортов!"
+
+# Chat messages
+chat-cleared: "&eЧат очищен администрацией"
+chat-muted: "&cЧат закрыт администрацией!"
+chat-unmuted: "&aЧат открыт!"
+slowchat-set: "&eЗадержка чата: &f{seconds} секунд"
+slowchat-removed: "&aЗадержка чата снята!"
+
+# Admin chat messages
+admin-chat-format: "&8[&6A&8] &e{sender} &7» &f{message}"
+
+# Server info
+server-online: "Онлайн: &f{online}/{max}"
+server-tps: "TPS: &a{tps}"
+server-ram: "RAM: &f{used}/{max} MB"
+
+# Help messages
+help-title: "&e&l=== Admin Commands ==="
+help-teleport: "&f/tp <player> &7- Teleport to player"
+help-gh: "&f/gh <player> &7- Bring player"
+help-invsee: "&f/invsee <player> &7- View inventory"
+help-spec: "&f/spec <player> &7- Spectate"
+help-freeze: "&f/freeze <player> &7- Freeze"
+help-check: "&f/check <player> [type] &7- Start check"
+help-panel: "&f/adminpanel [player] &7- Admin panel"
+help-staffmode: "&f/staffmode &7- Toggle staff mode"

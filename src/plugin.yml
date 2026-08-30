@@ -1,0 +1,753 @@
+name: AJailFix
+version: 26.3.5
+main: ru.midnight.ajailfix.AJailFixPlugin
+api-version: '26.2'
+author: Midnight
+softdepend:
+- voicechat
+- SimpleVoiceChat
+commands:
+  admin-dash:
+    description: Управление веб-сайтом админ-панели AJailFix и смена порта
+    usage: /admin-dash [port <порт> | on | off | status | gui]
+    aliases:
+    - admindash
+    - dash
+    - web
+    - site
+    permission: ajail.admin
+  ajail:
+    description: Система деморгана и управление AJailFix
+    usage: /ajail
+    permission: ajail.use
+  asms:
+    description: Личное сообщение игроку от администрации
+    usage: /asms <ник> <сообщение>
+    permission: ajail.asms
+  report:
+    description: Отправить репорт администрации
+    usage: /report <сообщение>
+    permission: ajail.report
+  ans:
+    description: Ответить на репорт
+    usage: /ans <номер> <ответ>
+    permission: ajail.reports
+  repcontrol:
+    description: Управление репортом
+    usage: /repcontrol <номер>
+    permission: ajail.reports
+  reports:
+    description: Список открытых репортов
+    usage: /reports
+    permission: ajail.reports
+  a:
+    description: Основной чат администрации
+    usage: /a <сообщение>
+    permission: ajail.adminchat
+  o:
+    description: Глобальное сообщение от администрации
+    usage: /o <сообщение>
+    permission: ajail.global
+  history:
+    description: История наказаний игрока
+    usage: /history <ник>
+    permission: ajail.history
+  ban:
+    description: Заблокировать игрока
+    usage: /ban <ник> <time|perm> <причина>
+    permission: ajail.ban
+  aban:
+    description: Тихо заблокировать игрока
+    usage: /aban <ник> <time|perm> <причина>
+    permission: ajail.ban
+  unban:
+    description: Разблокировать игрока
+    usage: /unban <ник>
+    permission: ajail.unban
+  bancheck:
+    description: Проверить активный бан игрока
+    usage: /bancheck <ник>
+    permission: ajail.ban
+  banlist:
+    description: Список активных банов
+    usage: /banlist
+    permission: ajail.ban
+  mute:
+    description: Выдать мут игроку
+    usage: /mute <ник> <time|perm> <причина>
+    permission: ajail.mute
+  unmute:
+    description: Снять мут с игрока
+    usage: /unmute <ник>
+    permission: ajail.unmute
+  mutecheck:
+    description: Проверить активный мут игрока
+    usage: /mutecheck <ник>
+    permission: ajail.mute
+  mutelist:
+    description: Список активных мутов
+    usage: /mutelist
+    permission: ajail.mute
+  check:
+    description: Начать проверку игрока на читы
+    usage: /check <ник> [причина]
+    permission: ajail.checks
+  uncheck:
+    description: Завершить проверку игрока
+    usage: /uncheck <ник>
+    permission: ajail.checks
+  checks:
+    description: Список активных проверок
+    usage: /checks
+    permission: ajail.checks
+  makeevent:
+    description: Установить точку старого режима ивента
+    usage: /makeevent
+    permission: ajail.event
+  event:
+    description: Войти в текущий ивент
+    usage: /event
+    permission: ajail.event.join
+  ev:
+    description: Полное управление ивентом
+    usage: /ev help
+    aliases:
+    - eventadmin
+    - em
+  eventpvp:
+    description: Включить или выключить PvP на ивенте
+    usage: /eventpvp true|false
+    permission: ajail.event
+  eventzone:
+    description: Установить границы зоны ивента
+    usage: /eventzone pos1|pos2
+    permission: ajail.event
+  makeeventzone:
+    description: Создать зону ивента по установленным точкам
+    usage: /makeeventzone
+    permission: ajail.event
+  eventzonepvp:
+    description: Включить или выключить PvP в зоне ивента
+    usage: /eventzonepvp true|false
+    permission: ajail.event
+  eventdimension:
+    description: Установить мир ивента
+    usage: /eventdimension current|<мир>
+    permission: ajail.event
+  eventdim:
+    description: Установить мир ивента
+    usage: /eventdim current|<мир>
+    permission: ajail.event
+  invsee:
+    description: Открыть инвентарь игрока
+    usage: /invsee <ник>
+    permission: ajail.invsee
+  esp:
+    description: Включить или выключить ESP лидеров
+    usage: /esp [on|off]
+    permission: ajail.esp
+  addlead:
+    description: Добавить лидера в ESP
+    usage: /addlead <ник> [надпись]
+    permission: ajail.leader.manage
+  removelead:
+    description: Удалить лидера из ESP
+    usage: /removelead <ник>
+    permission: ajail.leader.manage
+  leads:
+    description: Список лидеров в ESP
+    usage: /leads
+    permission: ajail.esp
+  addadmin:
+    description: Добавить администратора в ESP
+    usage: /addadmin <ник> [надпись]
+    permission: ajail.admin.manage
+  removeadmin:
+    description: Удалить администратора из ESP
+    usage: /removeadmin <ник>
+    permission: ajail.admin.manage
+  admins:
+    description: Список администраторов в ESP
+    usage: /admins
+    permission: ajail.esp
+  az:
+    description: Управление админ-зоной и телепортом в неё
+    usage: /az [set|remove]
+    permission: ajail.az
+  gm:
+    description: Включить или выключить бессмертие
+    usage: /gm [ник]
+    permission: ajail.godmode
+  godmode:
+    description: Включить или выключить бессмертие
+    usage: /godmode [ник]
+    permission: ajail.godmode
+  swapgm:
+    description: Переключить Survival/Spectator
+    usage: /swapgm [ник]
+    permission: ajail.swapgm
+  spec:
+    description: Начать наблюдение за игроком
+    usage: /spec <ник>
+    permission: ajail.spec
+  gh:
+    description: Телепортировать игрока к себе
+    usage: /gh <ник>
+    permission: ajail.teleport
+  gethere:
+    description: Телепортировать игрока к себе
+    usage: /gethere <ник>
+    permission: ajail.teleport
+  goto:
+    description: Телепортироваться к игроку или координатам
+    usage: /goto <ник>|<x> <y> <z> [мир]
+    permission: ajail.teleport
+  tp:
+    description: Телепортироваться к игроку или координатам
+    usage: /tp <ник>|<x> <y> <z> [мир]
+    permission: ajail.teleport
+  adminlevels:
+    description: Включение и выключение встроенных уровней администрации AJailFix
+    usage: /adminlevels on|off|status
+    aliases:
+    - adminlvl
+    - alvls
+  adminlevel:
+    description: Выдать, изменить или снять встроенный уровень администратора
+    usage: /adminlevel <ник> <1-6|remove>
+    aliases:
+    - setadminlevel
+    - alvl
+    permission: ajail.adminlevels.manage
+  module:
+    description: Управление модулями AJailFix
+    usage: /module <list|module on|off>
+    aliases:
+    - modules
+    permission: ajail.suite.access
+  warn:
+    description: Выдать предупреждение игроку
+    usage: /warn <ник> <причина>
+    permission: ajail.suite.access
+  unwarn:
+    description: Снять предупреждение игрока
+    usage: /unwarn <ник> [id]
+    permission: ajail.suite.access
+  note:
+    description: Добавить внутреннюю заметку об игроке
+    usage: /note <ник> <текст>
+    permission: ajail.suite.access
+  notes:
+    description: Посмотреть внутренние заметки об игроке
+    usage: /notes <ник>
+    permission: ajail.suite.access
+  whois:
+    description: Подробная информация об игроке
+    usage: /whois <ник>
+    permission: ajail.suite.access
+  staffmode:
+    description: Включить или выключить режим администратора
+    usage: /staffmode
+    aliases:
+    - duty
+    permission: ajail.suite.access
+  vanish:
+    description: Скрыть или показать администратора игрокам
+    usage: /vanish [ник]
+    aliases:
+    - v
+    permission: ajail.suite.access
+  freeze:
+    description: Заморозить игрока
+    usage: /freeze <ник>
+    permission: ajail.suite.access
+  unfreeze:
+    description: Разморозить игрока
+    usage: /unfreeze <ник>
+    permission: ajail.suite.access
+  back:
+    description: Вернуться на предыдущую точку админ-телепортации
+    usage: /back
+    permission: ajail.suite.access
+  endersee:
+    description: Открыть эндер-сундук игрока
+    usage: /endersee <ник>
+    permission: ajail.suite.access
+  armorsee:
+    description: Посмотреть броню и вторую руку игрока
+    usage: /armorsee <ник>
+    permission: ajail.suite.access
+  heal:
+    description: Полностью вылечить игрока
+    usage: /heal [ник]
+    permission: ajail.suite.access
+  feed:
+    description: Восстановить голод игрока
+    usage: /feed [ник]
+    permission: ajail.suite.access
+  speed:
+    description: Изменить скорость ходьбы или полёта
+    usage: /speed <1-10> [ник]
+    permission: ajail.suite.access
+  fly:
+    description: Включить или выключить полёт
+    usage: /fly [ник]
+    permission: ajail.suite.access
+  clearchat:
+    description: Очистить общий чат
+    usage: /clearchat
+    permission: ajail.suite.access
+  slowchat:
+    description: Установить задержку между сообщениями
+    usage: /slowchat <секунд>
+    permission: ajail.suite.access
+  mutechat:
+    description: Открыть или закрыть общий чат
+    usage: /mutechat [on|off]
+    permission: ajail.suite.access
+  broadcasttitle:
+    description: Показать Title и Subtitle всем игрокам
+    usage: /broadcasttitle <заголовок> | <подзаголовок>
+    aliases:
+    - btitle
+    permission: ajail.suite.access
+  actionbarall:
+    description: Показать сообщение в ActionBar всем игрокам
+    usage: /actionbarall <текст>
+    permission: ajail.suite.access
+  soundall:
+    description: Воспроизвести звук всем игрокам
+    usage: /soundall <звук>
+    permission: ajail.suite.access
+  serverinfo:
+    description: Подробная информация о состоянии сервера
+    usage: /serverinfo
+    permission: ajail.suite.access
+  lag:
+    description: Краткая диагностика производительности
+    usage: /lag
+    permission: ajail.suite.access
+  entitycount:
+    description: Посчитать сущности в мире
+    usage: /entitycount [мир]
+    permission: ajail.suite.access
+  cleardrops:
+    description: Удалить лежащие предметы
+    usage: /cleardrops [радиус]
+    permission: ajail.suite.access
+  killmobs:
+    description: Удалить мобов в указанном радиусе
+    usage: /killmobs [радиус]
+    permission: ajail.suite.access
+  seen:
+    description: Показать последний вход игрока
+    usage: /seen <ник>
+    permission: ajail.suite.access
+  playtime:
+    description: Показать время игрока на сервере
+    usage: /playtime <ник>
+    permission: ajail.suite.access
+  near:
+    description: Показать игроков рядом
+    usage: /near [радиус]
+    permission: ajail.suite.access
+  coords:
+    description: Показать координаты игрока
+    usage: /coords [ник]
+    permission: ajail.suite.access
+  uuid:
+    description: Показать UUID игрока
+    usage: /uuid <ник>
+    permission: ajail.suite.access
+  repair:
+    description: Починить предмет в руке
+    usage: /repair
+    permission: ajail.suite.access
+  repairall:
+    description: Починить всё ремонтируемое снаряжение
+    usage: /repairall
+    permission: ajail.suite.access
+  iteminfo:
+    description: Подробная информация о предмете в руке
+    usage: /iteminfo
+    permission: ajail.suite.access
+  itemname:
+    description: Переименовать предмет в руке
+    usage: /itemname <название>
+    permission: ajail.suite.access
+  itemlore:
+    description: Изменить описание предмета в руке
+    usage: /itemlore <текст>
+    permission: ajail.suite.access
+  sudo:
+    description: Выполнить разрешённую команду от имени игрока
+    usage: /sudo <ник> <команда>
+    permission: ajail.suite.access
+  maintenance:
+    description: Включить или выключить режим техработ
+    usage: /maintenance on|off
+    permission: ajail.suite.access
+  restart:
+    description: Запустить обратный отсчёт до перезапуска
+    usage: /restart <секунд>
+    permission: ajail.suite.access
+  cancelrestart:
+    description: Отменить запланированный перезапуск AJailFix
+    usage: /cancelrestart
+    permission: ajail.suite.access
+  staffstats:
+    description: Статистика работы администратора
+    usage: /staffstats [ник]
+    permission: ajail.suite.access
+  adminlog:
+    description: Журнал действий администратора
+    usage: /adminlog <ник>
+    permission: ajail.suite.access
+  rollbackpunish:
+    description: Откатить административное действие по ID
+    usage: /rollbackpunish <id>
+    aliases:
+    - rollback
+    - undo
+    permission: ajail.suite.access
+  case:
+    description: 'Полная карточка игрока: наказания, репорты, заметки и проверки'
+    usage: /case <ник>
+    permission: ajail.suite.access
+  alts:
+    description: Найти связанные аккаунты по сохранённым идентификаторам
+    usage: /alts <ник>
+    permission: ajail.suite.access
+  watch:
+    description: Включить подробное наблюдение за действиями игрока
+    usage: /watch <ник>
+    permission: ajail.suite.access
+  stafflist:
+    description: Показать администрацию онлайн и её текущий статус
+    usage: /stafflist
+    permission: ajail.suite.access
+  audit:
+    description: Просмотреть журнал аудита AJailFix
+    usage: /audit [id]
+    permission: ajail.suite.access
+  evidence:
+    description: Добавить или посмотреть доказательство для действия
+    usage: /evidence <id-действия> [текст]
+    permission: ajail.suite.access
+  punishtemplate:
+    description: Управление шаблонами наказаний
+    usage: /punishtemplate <...>
+    aliases:
+    - ptemplate
+    permission: ajail.suite.access
+  punish:
+    description: Применить сохранённый шаблон наказания
+    usage: /punish <ник> <шаблон> [причина]
+    permission: ajail.suite.access
+  staffreview:
+    description: Просмотреть активность администратора
+    usage: /staffreview <ник>
+    permission: ajail.suite.access
+  repqueue:
+    description: Расширенная очередь репортов
+    usage: /repqueue
+    permission: ajail.suite.access
+  repprio:
+    description: Изменить приоритет репорта
+    usage: /repprio <id> <приоритет>
+    permission: ajail.suite.access
+  repcategory:
+    description: Установить категорию репорта
+    usage: /repcategory <id> <категория>
+    permission: ajail.suite.access
+  repclaimnext:
+    description: Взять следующий свободный репорт из очереди
+    usage: /repclaimnext
+    permission: ajail.suite.access
+  repcontext:
+    description: Показать контекст репорта
+    usage: /repcontext <id>
+    permission: ajail.suite.access
+  cleanup:
+    description: Умная очистка сущностей
+    usage: /cleanup <тип> [радиус]
+    permission: ajail.suite.access
+  entityinfo:
+    description: Информация о сущности, на которую смотрит администратор
+    usage: /entityinfo
+    permission: ajail.suite.access
+  chunkinfo:
+    description: Диагностика текущего чанка
+    usage: /chunkinfo
+    permission: ajail.suite.access
+  perfalerts:
+    description: Включить или выключить уведомления о производительности
+    usage: /perfalerts on|off
+    permission: ajail.suite.access
+  mass:
+    description: Выполнить разрешённое массовое административное действие
+    usage: /mass <выбор> <действие> [аргументы]
+    permission: ajail.suite.access
+  tempperm:
+    description: Выдать временное permission
+    usage: /tempperm <ник> <право> <срок>
+    permission: ajail.suite.access
+  templevel:
+    description: Выдать временный уровень администрации
+    usage: /templevel <ник> <1-6> <срок>
+    permission: ajail.suite.access
+  levelprofile:
+    description: Просмотреть или настроить профиль уровня администрации
+    usage: /levelprofile <...>
+    permission: ajail.suite.access
+  emergency:
+    description: Включить или выключить аварийный режим
+    usage: /emergency on|off
+    permission: ajail.suite.access
+  serverlock:
+    description: Запретить или разрешить вход новых обычных игроков
+    usage: /serverlock on|off
+    permission: ajail.suite.access
+  incident:
+    description: Управление режимом расширенного логирования инцидента
+    usage: /incident <start|stop|status> [название]
+    permission: ajail.suite.access
+  schedule:
+    description: Запланировать выполнение серверной команды
+    usage: /schedule <секунд> <команда>
+    permission: ajail.suite.access
+  schedules:
+    description: Список запланированных действий AJailFix
+    usage: /schedules
+    permission: ajail.suite.access
+  unschedule:
+    description: Отменить запланированное действие
+    usage: /unschedule <id>
+    permission: ajail.suite.access
+  poll:
+    description: Создать или управлять серверным опросом
+    usage: /poll <...>
+    permission: ajail.suite.access
+  vote:
+    description: Проголосовать в активном опросе
+    usage: /vote <вариант>
+  webhook:
+    description: Настроить или проверить Discord Webhook AJailFix
+    usage: /webhook <...>
+    permission: ajail.suite.access
+  adminpanel:
+    description: Открыть административную панель AJailFix
+    usage: /adminpanel [ник]
+    aliases:
+    - apanel
+    permission: ajail.suite.access
+  helpadmin:
+    description: Показать справку по административным командам AJailFix
+    usage: /helpadmin
+    aliases:
+    - adminhelp
+    permission: ajail.suite.access
+permissions:
+  ajail.admin:
+    default: op
+    description: Полный административный доступ AJailFix
+  ajail.use:
+    default: op
+    description: Использование системы деморгана
+  ajail.set:
+    default: op
+    description: Установка точек и настроек деморгана
+  ajail.check:
+    default: op
+    description: Проверка статуса деморгана
+  ajail.unjail:
+    default: op
+    description: Освобождение из деморгана
+  ajail.reload:
+    default: op
+    description: Перезагрузка настроек AJailFix
+  ajail.asms:
+    default: op
+    description: Отправка административных сообщений игрокам
+  ajail.report:
+    default: true
+    description: Отправка репортов
+  ajail.reports:
+    default: op
+    description: Работа с репортами
+  ajail.adminchat:
+    default: op
+    description: Доступ к административному чату
+  ajail.global:
+    default: op
+    description: Глобальные сообщения администрации
+  ajail.history:
+    default: op
+    description: Просмотр истории наказаний
+  ajail.ban:
+    default: op
+    description: Выдача и просмотр банов
+  ajail.unban:
+    default: op
+    description: Снятие банов
+  ajail.mute:
+    default: op
+    description: Выдача и просмотр мутов
+  ajail.unmute:
+    default: op
+    description: Снятие мутов
+  ajail.checks:
+    default: op
+    description: Управление проверками
+  ajail.event:
+    default: op
+    description: Старые команды ивентов
+  ajail.event.manage:
+    default: op
+    description: Полное управление ивентами
+  ajail.event.join:
+    default: true
+    description: Участие в ивентах
+  ajail.invsee:
+    default: op
+    description: Просмотр инвентаря игроков
+  ajail.teleport:
+    default: op
+    description: Административные телепортации
+  ajail.esp:
+    default: op
+    description: Просмотр ESP лидеров и администрации
+  ajail.leader.manage:
+    default: op
+    description: Управление лидерами в ESP
+  ajail.admin.manage:
+    default: op
+    description: Управление администраторами в ESP
+  ajail.az:
+    default: op
+    description: Управление админ-зоной
+  ajail.godmode:
+    default: op
+    description: Управление бессмертием
+  ajail.swapgm:
+    default: op
+    description: Переключение игровых режимов
+  ajail.spec:
+    default: op
+    description: Наблюдение за игроками
+  ajail.logs:
+    default: op
+    description: Просмотр административных логов
+  ajail.level.1:
+    description: AJailFix уровень администрации 1 — репорты и базовые информационные функции
+    default: false
+    children:
+      ajail.suite.access: true
+      ajail.reports: true
+      ajail.adminchat: true
+      ajail.history: true
+      ajail.asms: true
+      ajail.esp: true
+  ajail.level.2:
+    description: AJailFix уровень администрации 2 — основные инструменты работы с игроками
+    default: false
+    children:
+      ajail.level.1: true
+      ajail.teleport: true
+      ajail.invsee: true
+      ajail.spec: true
+      ajail.az: true
+      ajail.godmode: true
+      ajail.swapgm: true
+  ajail.level.3:
+    description: AJailFix уровень администрации 3 — проверки и средние наказания
+    default: false
+    children:
+      ajail.level.2: true
+      ajail.use: true
+      ajail.unjail: true
+      ajail.check: true
+      ajail.checks: true
+      ajail.mute: true
+      ajail.unmute: true
+      ajail.global: true
+  ajail.level.4:
+    description: AJailFix уровень администрации 4 — старшая модерация и управление ивентами
+    default: false
+    children:
+      ajail.level.3: true
+      ajail.ban: true
+      ajail.unban: true
+      ajail.event: true
+      ajail.event.manage: true
+      ajail.leader.manage: true
+      ajail.logs: true
+  ajail.level.5:
+    description: AJailFix уровень администрации 5 — доступ старшей администрации
+    default: false
+    children:
+      ajail.level.4: true
+      ajail.admin: true
+      ajail.admin.manage: true
+      ajail.set: true
+      ajail.reload: true
+  ajail.adminlevels.manage:
+    description: Включение и выключение системы уровней администрации AJailFix
+    default: op
+  ajail.*:
+    description: Полный набор прав AJailFix
+    default: false
+    children:
+      ajail.suite.access: true
+      ajail.suite.*: true
+      ajail.admin: true
+      ajail.use: true
+      ajail.set: true
+      ajail.check: true
+      ajail.unjail: true
+      ajail.reload: true
+      ajail.asms: true
+      ajail.report: true
+      ajail.reports: true
+      ajail.adminchat: true
+      ajail.global: true
+      ajail.history: true
+      ajail.ban: true
+      ajail.unban: true
+      ajail.mute: true
+      ajail.unmute: true
+      ajail.checks: true
+      ajail.event: true
+      ajail.event.manage: true
+      ajail.event.join: true
+      ajail.invsee: true
+      ajail.teleport: true
+      ajail.esp: true
+      ajail.leader.manage: true
+      ajail.admin.manage: true
+      ajail.az: true
+      ajail.godmode: true
+      ajail.swapgm: true
+      ajail.spec: true
+      ajail.logs: true
+      ajail.adminlevels.manage: true
+  ajail.suite.access:
+    description: Доступ к командам и подсказкам расширенной админ-системы AJailFix
+    default: op
+  ajail.suite.*:
+    description: Полный доступ к расширенной админ-системе AJailFix
+    default: op
+    children:
+      ajail.suite.access: true
+  ajail.modules:
+    description: Управление модулями AJailFix
+    default: op
+  ajail.adminpanel:
+    description: Открытие административной панели AJailFix
+    default: op
+  ajail.level.6:
+    description: AJailFix уровень администрации 6 — полный доступ без ограничений
+    default: false
+    children:
+      ajail.level.5: true
+      ajail.*: true

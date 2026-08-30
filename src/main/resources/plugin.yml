@@ -1,0 +1,366 @@
+name: AJailFix
+version: ${project.version}
+main: ru.midnight.ajailfix.AJailFixPlugin
+api-version: '1.20'
+author: Midnight
+description: Advanced Jail Fix - Minecraft Administration Plugin
+
+commands:
+  ajail:
+    description: Система деморгана
+    usage: /ajail <player> [time] [reason]
+  adminpanel:
+    description: Админ-панель
+    usage: /adminpanel [player]
+    aliases: [apanel]
+  invsee:
+    description: Открыть инвентарь
+    usage: /invsee <player>
+  endersee:
+    description: Открыть эндер-сундук
+    usage: /endersee <player>
+  tp:
+    description: Телепорт
+    usage: /tp <player>
+  goto:
+    description: Телепорт
+    usage: /goto <player>
+  gh:
+    description: Призвать игрока
+    usage: /gh <player>
+  gethere:
+    description: Призвать игрока
+    usage: /gethere <player>
+  back:
+    description: Вернуться
+    usage: /back
+  spec:
+    description: Наблюдение
+    usage: /spec <player>
+  gm:
+    description: God Mode
+    usage: /gm [player]
+  fly:
+    description: Fly
+    usage: /fly [player]
+  freeze:
+    description: Заморозка
+    usage: /freeze <player>
+  unfreeze:
+    description: Разморозка
+    usage: /unfreeze <player>
+  heal:
+    description: Лечение
+    usage: /heal [player]
+  feed:
+    description: Кормление
+    usage: /feed [player]
+  speed:
+    description: Скорость
+    usage: /speed <0-10> [player]
+  vanish:
+    description: Невидимость
+    usage: /vanish [player]
+    aliases: [v]
+  staffmode:
+    description: Staff Mode
+    usage: /staffmode
+    aliases: [duty]
+  whois:
+    description: Информация
+    usage: /whois <player>
+  history:
+    description: История
+    usage: /history <player>
+  ban:
+    description: Бан
+    usage: /ban <player> [time] [reason]
+  unban:
+    description: Разбан
+    usage: /unban <player>
+  mute:
+    description: Мут
+    usage: /mute <player> [time] [reason]
+  unmute:
+    description: Размут
+    usage: /unmute <player>
+  kick:
+    description: Кик
+    usage: /kick <player> [reason]
+  warn:
+    description: Варн
+    usage: /warn <player> <reason>
+  unwarn:
+    description: Снять варн
+    usage: /unwarn <player> [id]
+  tempban:
+    description: Временный бан
+    usage: /tempban <player> <time> [reason]
+  banip:
+    description: Бан по IP
+    usage: /banip <player/ip> [reason]
+  banlist:
+    description: Банлист
+    usage: /banlist
+  mutelist:
+    description: Мутлист
+    usage: /mutelist
+  check:
+    description: Проверка
+    usage: /check <player> [type] [reason]
+  uncheck:
+    description: Завершить проверку
+    usage: /uncheck <player> [verdict]
+  checks:
+    description: Список проверок
+    usage: /checks
+  watch:
+    description: Наблюдение
+    usage: /watch <player>
+  adminlevel:
+    description: Уровень админа
+    usage: /adminlevel <player> <1-6|remove>
+    aliases: [alvl]
+  adminlevels:
+    description: Система уровней
+    usage: /adminlevels on|off|status
+    aliases: [alvls]
+  note:
+    description: Заметка
+    usage: /note <player> <text>
+  notes:
+    description: Заметки
+    usage: /notes <player>
+  seen:
+    description: Последний вход
+    usage: /seen <player>
+  playtime:
+    description: Время игры
+    usage: /playtime <player>
+  alts:
+    description: Альты
+    usage: /alts <player>
+  case:
+    description: Карточка
+    usage: /case <player>
+  near:
+    description: Игроки рядом
+    usage: /near [radius]
+  ping:
+    description: Пинг
+    usage: /ping [player]
+  stafflist:
+    description: Список админов
+    usage: /stafflist
+  a:
+    description: Админ-чат
+    usage: /a <message>
+  o:
+    description: Объявление
+    usage: /o <message>
+  broadcast:
+    description: Объявление
+    usage: /broadcast <message>
+  clearchat:
+    description: Очистить чат
+    usage: /clearchat
+    aliases: [chatclear]
+  mutechat:
+    description: Мут чата
+    usage: /mutechat [on|off]
+  slowchat:
+    description: Задержка чата
+    usage: /slowchat <seconds>
+  globalmute:
+    description: Глобальный мут
+    usage: /globalmute
+  report:
+    description: Репорт
+    usage: /report <message>
+  reports:
+    description: Репорты
+    usage: /reports
+  ans:
+    description: Ответ на репорт
+    usage: /ans <id> <answer>
+  asms:
+    description: Сообщение от админа
+    usage: /asms <player> <message>
+  lag:
+    description: Информация о сервере
+    usage: /lag
+  serverinfo:
+    description: Информация о сервере
+    usage: /serverinfo
+  entitycount:
+    description: Сущности
+    usage: /entitycount [world]
+  cleardrops:
+    description: Очистить дроп
+    usage: /cleardrops [radius]
+  killmobs:
+    description: Убить мобов
+    usage: /killmobs [radius]
+  broadcasttitle:
+    description: Титл всем
+    usage: /broadcasttitle <title> | <subtitle>
+    aliases: [btitle]
+  soundall:
+    description: Звук всем
+    usage: /soundall <sound>
+  actionbarall:
+    description: ActionBar всем
+    usage: /actionbarall <message>
+  entityinfo:
+    description: Информация о сущности
+    usage: /entityinfo
+  chunkinfo:
+    description: Информация о чанке
+    usage: /chunkinfo
+  spy:
+    description: Шпион
+    usage: /spy
+  msgspy:
+    description: Шпион за сообщениями
+    usage: /msgspy
+  locspy:
+    description: Шпион за локацией
+    usage: /locspy
+  sudo:
+    description: Судо
+    usage: /sudo <player> <command>
+  world:
+    description: Сменить мир
+    usage: /world <worldname>
+  randomtp:
+    description: Случайный ТП
+    usage: /randomtp [world]
+  setspawn:
+    description: Установить спавн
+    usage: /setspawn
+  spawn:
+    description: Телепорт на спавн
+    usage: /spawn [player]
+  delhome:
+    description: Удалить точку
+    usage: /delhome <player>
+  audit:
+    description: Аудит
+    usage: /audit [limit]
+  mass:
+    description: Массовое действие
+    usage: /mass <action> <args>
+  punish:
+    description: Применить шаблон
+    usage: /punish <player> <template> [reason]
+  adminlog:
+    description: Логи админа
+    usage: /adminlog
+  maintenance:
+    description: Техработы
+    usage: /maintenance [on|off]
+  lockdown:
+    description: Полная блокировка
+    usage: /lockdown [on|off]
+  rollback:
+    description: Откат
+    usage: /rollback <id>
+  web:
+    description: Веб-панель
+    usage: /web [port]
+  reloadajail:
+    description: Перезагрузка
+    usage: /reloadajail
+  helpadmin:
+    description: Помощь
+    usage: /helpadmin
+    aliases: [adminhelp]
+  ac:
+    description: Античит
+    usage: /ac [player]
+  anticheat:
+    description: Античит
+    usage: /anticheat [player]
+
+permissions:
+  ajail.*:
+    description: Все права AJailFix
+    default: op
+  ajail.suite.access:
+    description: Базовый доступ
+    default: op
+  ajail.admin:
+    description: Полный доступ
+    default: op
+  ajail.use:
+    description: Система деморгана
+    default: op
+  ajail.set:
+    description: Установка точек
+    default: op
+  ajail.check:
+    description: Проверка деморгана
+    default: op
+  ajail.unjail:
+    description: Освобождение
+    default: op
+  ajail.reload:
+    description: Перезагрузка
+    default: op
+  ajail.asms:
+    description: Сообщения от админа
+    default: op
+  ajail.report:
+    description: Репорты (для игроков)
+    default: true
+  ajail.reports:
+    description: Управление репортами
+    default: op
+  ajail.adminchat:
+    description: Админ-чат
+    default: op
+  ajail.global:
+    description: Глобальные объявления
+    default: op
+  ajail.history:
+    description: История наказаний
+    default: op
+  ajail.ban:
+    description: Бан
+    default: op
+  ajail.unban:
+    description: Разбан
+    default: op
+  ajail.mute:
+    description: Мут
+    default: op
+  ajail.unmute:
+    description: Размут
+    default: op
+  ajail.checks:
+    description: Проверки
+    default: op
+  ajail.teleport:
+    description: Телепортация
+    default: op
+  ajail.invsee:
+    description: Просмотр инвентаря
+    default: op
+  ajail.spec:
+    description: Наблюдение
+    default: op
+  ajail.godmode:
+    description: God Mode
+    default: op
+  ajail.fly:
+    description: Fly
+    default: op
+  ajail.swapgm:
+    description: Swap GM
+    default: op
+  ajail.logs:
+    description: Логи
+    default: op
+  ajail.adminlevels.manage:
+    description: Управление уровнями
+    default: op

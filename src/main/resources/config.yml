@@ -1,0 +1,22 @@
+# AJailFix Configuration
+
+messages:
+  prefix: "&8[&cAJail&8]&r "
+  admin-prefix: "&8[&6Admin&8]&r "
+  log-format: "&7[%time%] %player%: %message%"
+
+settings:
+  broadcast-to-ops: true
+  use-sounds: true
+  check-sound: "ENTITY_ENDER_DRAGON_GROWL"
+  auto-complete-offline: true
+
+admin-levels:
+  enabled: true
+
+chat:
+  muted: false
+  slow: 0
+
+data:
+  # Data is stored in separate files
